@@ -1,9 +1,9 @@
 package Pages;
 
 import com.shaft.driver.SHAFT;
+import com.shaft.gui.browser.internal.JavaScriptWaitManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.testng.asserts.SoftAssert;
+
 
 public class Menu {
     private SHAFT.GUI.WebDriver driver;
@@ -29,6 +29,8 @@ public class Menu {
 
     ///////////////// Validations \\\\\\\\\\\\\\\\\\\
     public Menu assertOnLoggedInAsdWord(String expextedString) {
+        JavaScriptWaitManager.waitForLazyLoading();
+        driver.element().waitToBeReady(successfulLoginText);
         driver.element().assertThat(successfulLoginText).text().isEqualTo("Logged in as "+expextedString).perform();
         return this;
     }
