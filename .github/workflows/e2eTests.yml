@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  TESTING_SCOPE:""
+  TESTING_SCOPE: "verifications.TestCase1"
 
 jobs:
   Windows_Edge_Local:
@@ -20,7 +20,7 @@ jobs:
           cache: 'maven'
           check-latest: true
       - name: Run tests
-        continue-on-error: true
+        continue-on-error: truey
         run: mvn -e test "-DexecutionAddress=local" "-DtargetOperatingSystem=WINDOWS" "-DtargetBrowserName=MicrosoftEdge" "-DheadlessExecution=true" "-DgenerateAllureReportArchive=true" "-Dtest=${TESTING_SCOPE}"
       - name: Upload Allure Report as Pipeline Artifact
         if: always()

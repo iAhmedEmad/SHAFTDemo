@@ -1,3 +1,5 @@
+package verifications;
+
 import Pages.*;
 import org.testng.annotations.Test;
 
