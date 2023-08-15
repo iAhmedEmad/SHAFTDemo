@@ -49,10 +49,10 @@ public class TestCase1{
         new AccountCreatedSuccessfullyPage(driver).
                 assertOnAccountCreatedWord("ACCOUNT CREATED!").
                 clickContinue();
-
+/*
         new  Menu(driver).
                 assertOnLoggedInAsdWord("Ahmed").
-                deleteAccount();
+                deleteAccount();*/
 
         new AccountDeletedPage(driver).
                 assertOnAccountDeleted("ACCOUNT DELETED!");

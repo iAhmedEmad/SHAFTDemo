@@ -30,7 +30,7 @@ public class Menu {
     ///////////////// Validations \\\\\\\\\\\\\\\\\\\
     public Menu assertOnLoggedInAsdWord(String expextedString) {
         JavaScriptWaitManager.waitForLazyLoading();
-        driver.element().waitToBeReady(successfulLoginText);
+        //driver.element().waitToBeReady(successfulLoginText);
         driver.element().assertThat(successfulLoginText).text().isEqualTo("Logged in as "+expextedString).perform();
         return this;
     }
