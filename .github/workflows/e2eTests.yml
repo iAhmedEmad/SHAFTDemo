@@ -40,8 +40,6 @@ jobs:
         with:
             report_paths: 'target/surefire-reports/TEST-*.xml'
 
-
-jobs:
   Liniux_Chrome_Local:
     runs-on: ubuntu-latest
     steps:
