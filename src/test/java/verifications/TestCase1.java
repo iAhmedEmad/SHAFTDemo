@@ -1,9 +1,19 @@
 package verifications;
 
 import Pages.*;
+import com.shaft.driver.SHAFT;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestCase1 extends TestConfigurations {
+public class TestCase1{
+    SHAFT.GUI.WebDriver driver;
+    @BeforeMethod
+    public void setUp() {
+        //driver = new ChromeDriver();
+        driver = new SHAFT.GUI.WebDriver();
+        driver.browser().navigateToURL("https://automationexercise.com/");
+        //SHAFT.Properties.reporting.set().openAllureReportAfterExecution(true);
+    }
     /*@Test(description = "Test Exercise")
     public void testExercise() {
         // Fluent Design (Complete Fluency)
