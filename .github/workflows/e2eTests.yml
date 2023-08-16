@@ -21,7 +21,7 @@ jobs: #the job(s) to be run within the workflow [we can run multiple jobs to per
           check-latest: true
       - name: Run tests #configurations for the tests to be run
         continue-on-error: true
-        run: mvn test -DwhenToTakePageSourceSnapshot="FailuresOnly" -DclickUsingJavascriptWhenWebDriverClickFails="true" -DexecutionAddress="local" -DtargetOperatingSystem="WINDOWS" -DtargetBrowserName="MicrosoftEdge" -DheadlessExecution="true" -DgenerateAllureReportArchive="true" -Dtest="verifications.TestCase1"
+        run: mvn test -DwhenToTakePageSourceSnapshot="FailuresOnly" -DclickUsingJavascriptWhenWebDriverClickFails="true" -DexecutionAddress="local" -DtargetOperatingSystem="WINDOWS" -DtargetBrowserName="MicrosoftEdge" -DheadlessExecution="true" -DgenerateAllureReportArchive="true" -Dtest="${TESTING_SCOPE}"
       - name: Upload Allure Report as Pipeline Artifact #to generate allure report
         if: always()
         uses: actions/upload-artifact@v3
@@ -55,7 +55,7 @@ jobs: #the job(s) to be run within the workflow [we can run multiple jobs to per
           check-latest: true
       - name: Run tests
         continue-on-error: true
-        run: mvn test -DwhenToTakePageSourceSnapshot="FailuresOnly" -DclickUsingJavascriptWhenWebDriverClickFails="true" -DexecutionAddress="local" "-DtargetOperatingSystem="LINUX" -DtargetBrowserName="chrome" -DheadlessExecution="true" -DgenerateAllureReportArchive="true" -Dtest="verifications.TestCase1"
+        run: mvn test -DwhenToTakePageSourceSnapshot="FailuresOnly" -DclickUsingJavascriptWhenWebDriverClickFails="true" -DexecutionAddress="local" "-DtargetOperatingSystem="LINUX" -DtargetBrowserName="chrome" -DheadlessExecution="true" -DgenerateAllureReportArchive="true" -Dtest="${TESTING_SCOPE}"
       - name: Upload Allure Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v3
