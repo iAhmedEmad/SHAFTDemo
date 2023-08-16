@@ -42,7 +42,7 @@ jobs: #the job(s) to be run within the workflow [we can run multiple jobs to per
 
 #Defining another job to be done on another virtual machine [parallel execution]
   Linux_Chrome_Local:
-    runs-on: ubuntu-latest
+    runs-on: Ubuntu-latest
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
