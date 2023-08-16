@@ -5,7 +5,7 @@ import com.shaft.driver.SHAFT;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class TestCase1{
+public class TestCase {
     SHAFT.GUI.WebDriver driver;
     @BeforeMethod
     public void setUp() {
@@ -49,10 +49,10 @@ public class TestCase1{
         new AccountCreatedSuccessfullyPage(driver).
                 assertOnAccountCreatedWord("ACCOUNT CREATED!").
                 clickContinue();
-/*
+
         new  Menu(driver).
-                assertOnLoggedInAsdWord("Ahmed").
-                deleteAccount();*/
+               // assertOnLoggedInAsdWord("Ahmed").
+                deleteAccount();
 
         new AccountDeletedPage(driver).
                 assertOnAccountDeleted("ACCOUNT DELETED!");
