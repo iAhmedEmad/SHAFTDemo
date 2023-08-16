@@ -53,3 +53,5 @@ build/
 .project
 /.idea/
 /bin/
+/src/test/resources/META-INF/services/org.testng.ITestNGListener
+/generate_allure_report.bat
