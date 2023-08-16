@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  TESTING_SCOPE: "verifications.TestCase"
+  TESTING_SCOPE: "verifications.TestCase1"
 
 jobs:
   Windows_Edge_Local:
