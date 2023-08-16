@@ -1,47 +1,46 @@
-name: E2E Tests #workflow name
+name: E2E Tests
 
-on: #workflow trigger
+on:
   workflow_dispatch:
 
-env: #variables
-  TESTING_SCOPE: "verifications.TestCase1" #scope of the tests to be run
+env:
+  TESTING_SCOPE: "verifications.TestCase1"
 
-jobs: #the job(s) to be run within the workflow [we can run multiple jobs to perform parallel execution]
-  Windows_Edge_Local: #runnig on Windows OS, Edge browser & locally on the virtual machine
-    runs-on: windows-latest #version on the OS
+jobs:
+  Windows_Edge_Local:
+    runs-on: windows-latest
     steps:
-      - name: Checkout Code #this step is to let the virtual machine detect the code in the current GitHub repository
+      - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Set up JDK 17 #set up java 17 on the virtual machine  (maven & other things is already pre-installed on the virtual machines provided by GitHub Actions, so we do not need to install them)
+      - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: '17'
           distribution: 'zulu'
           cache: 'maven'
           check-latest: true
-      - name: Run tests #configurations for the tests to be run
+      - name: Run tests
         continue-on-error: true
-        run: mvn test -DwhenToTakePageSourceSnapshot="FailuresOnly" -DclickUsingJavascriptWhenWebDriverClickFails="true" -DexecutionAddress="local" -DtargetOperatingSystem="WINDOWS" -DtargetBrowserName="MicrosoftEdge" -DheadlessExecution="true" -DgenerateAllureReportArchive="true" -Dtest="${TESTING_SCOPE}"
-      - name: Upload Allure Report as Pipeline Artifact #to generate allure report
+        run: mvn -e test "-DwhenToTakePageSourceSnapshot=FailuresOnly" "-DclickUsingJavascriptWhenWebDriverClickFails=true" "-DexecutionAddress=local" "-DtargetOperatingSystem=WINDOWS" "-DtargetBrowserName=MicrosoftEdge" "-DheadlessExecution=true" "-DgenerateAllureReportArchive=true" "-Dtest=${TESTING_SCOPE}"
+      - name: Upload Allure Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Windows_Edge_Local_Allure #allure report name
+          name: Windows_Edge_Local_Allure
           path: "generatedReport_*.zip"
-      - name: Upload Execution Summary Report as Pipeline Artifact #to generate summary execution report
+      - name: Upload Execution Summary Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v3
         with:
-          name: Windows_Edge_Local_Summary #summary execution report name
+          name: Windows_Edge_Local_Summary
           path: "execution-summary/ExecutionSummaryReport_*.html"
-      - name: Publish Test Report #to publish the reports
+      - name: Publish Test Report
         uses: mikepenz/action-junit-report@v3
         if: success() || failure() # always run even if the previous step fails
         with:
             report_paths: 'target/surefire-reports/TEST-*.xml'
 
-#Defining another job to be done on another virtual machine [parallel execution]
-  Linux_Chrome_Local:
+  Liniux_Chrome_Local:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -55,7 +54,7 @@ jobs: #the job(s) to be run within the workflow [we can run multiple jobs to per
           check-latest: true
       - name: Run tests
         continue-on-error: true
-        run: mvn test -DwhenToTakePageSourceSnapshot="FailuresOnly" -DclickUsingJavascriptWhenWebDriverClickFails="true" -DexecutionAddress="local" "-DtargetOperatingSystem="LINUX" -DtargetBrowserName="chrome" -DheadlessExecution="true" -DgenerateAllureReportArchive="true" -Dtest="${TESTING_SCOPE}"
+        run: mvn -e test "-DwhenToTakePageSourceSnapshot=FailuresOnly" "-DclickUsingJavascriptWhenWebDriverClickFails=true" "-DexecutionAddress=local" "-DtargetOperatingSystem=LINUX" "-DtargetBrowserName=chrome" "-DheadlessExecution=true" "-DgenerateAllureReportArchive=true" "-Dtest=${TESTING_SCOPE}"
       - name: Upload Allure Report as Pipeline Artifact
         if: always()
         uses: actions/upload-artifact@v3
