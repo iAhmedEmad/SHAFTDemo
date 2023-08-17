@@ -1,8 +1,6 @@
 package Pages;
 
 import com.shaft.driver.SHAFT;
-import org.openqa.selenium.WebDriver;
-import org.testng.asserts.SoftAssert;
 
 public class HomePage {
     private SHAFT.GUI.WebDriver driver;
@@ -20,9 +18,9 @@ public class HomePage {
         driver.browser().navigateToURL(url);
     }
     // Validations
-    public Menu assertOnPageTitle(String expextedString) {
+    public HomePage assertOnPageTitle(String expextedString) {
         driver.browser().assertThat().title().isEqualTo(expextedString).perform();
-        return new Menu(driver);
+        return this;
     }
 
 }

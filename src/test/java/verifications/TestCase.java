@@ -9,27 +9,9 @@ public class TestCase {
     SHAFT.GUI.WebDriver driver;
     @BeforeMethod
     public void setUp() {
-        //driver = new ChromeDriver();
         driver = new SHAFT.GUI.WebDriver();
         driver.browser().navigateToURL("https://automationexercise.com/");
-        //SHAFT.Properties.reporting.set().openAllureReportAfterExecution(true);
     }
-    /*@Test(description = "Test Exercise")
-    public void testExercise() {
-        // Fluent Design (Complete Fluency)
-        new HomePage(driver,sa).
-                assertOnPageTitle("Automation Exercise").
-                clickSignupAndLoginButton().
-                assertOnNewUserSignupWord("New User Signup!").
-                newUserSignup("Ahmed").
-                assertOnEnterAccountInformationWord("ENTER ACCOUNT INFORMATION").
-                createAccount("Ahmed","Emad","_VOIS","here","There","Cairo","Cairo","123","12345678910").
-                assertOnAccountCreatedWord("ACCOUNT CREATED!").
-                clickContinue().
-                assertOnLoggedInAsdWord("Logged in as Ahmed").
-                deleteAccount().
-                assertOnAccountDeleted("ACCOUNT DELETED!");
-    }*/
     @Test(description = "Test Exercise")
     public void testExercise() {
         new HomePage(driver).
@@ -50,11 +32,11 @@ public class TestCase {
                 assertOnAccountCreatedWord("ACCOUNT CREATED!").
                 clickContinue();
 
-        /*new  Menu(driver).
+        new  Menu(driver).
                 assertOnLoggedInAsdWord("Ahmed").
                 deleteAccount();
 
         new AccountDeletedPage(driver).
-                assertOnAccountDeleted("ACCOUNT DELETED!");*/
+                assertOnAccountDeleted("ACCOUNT DELETED!");
     }
 }
