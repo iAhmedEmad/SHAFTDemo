@@ -1,5 +1,5 @@
 # SHAFT ENGINE - GUI Test Automation Demo Project
-This demo project is to Practice SHAFT_ENGINE for Web Test Automation.
+This demo project is to Practice SHAFT_ENGINE Framework for Web Test Automation.
 
 **The project Support PARALLEL EXECUTION using CICD tool (GitHub Actions) on both Windows_Edge & Liniux_Chrome**
 ## Framework used in the project:
