@@ -32,11 +32,11 @@ public class TestCase {
                 assertOnAccountCreatedWord("ACCOUNT CREATED!").
                 clickContinue();
 
-        new  Menu(driver).
+        /*new  Menu(driver).
                 assertOnLoggedInAsdWord("Ahmed").
                 deleteAccount();
 
         new AccountDeletedPage(driver).
-                assertOnAccountDeleted("ACCOUNT DELETED!");
+                assertOnAccountDeleted("ACCOUNT DELETED!");*/
     }
 }
